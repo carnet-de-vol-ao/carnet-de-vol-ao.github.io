@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Carnet de Vol AO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Orbitron:wght@500;700&family=Exo+2:wght@400;600;700&family=Saira+Stencil+One&family=Oswald:wght@500;600&family=Bebas+Neue&family=Share+Tech+Mono&family=Roboto+Condensed:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0e2142">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
@@ -13,9 +14,10 @@
   --bg:#070d1a; --bg2:#0b1426; --panel:#0f1a30; --panel2:#14223d; --line:#1f3054; --line2:#2a3f68;
   --text:#e7eef9; --muted:#8ea3c4; --dim:#5d7398;
   --cyan:#22d3ee; --amber:#fbbf24; --green:#34d399; --rose:#fb7185; --violet:#a78bfa; --orange:#fb923c; --sky:#60a5fa; --lime:#a3e635; --pink:#f472b6;
-  --accent:var(--cyan); --glow:0 0 0 1px rgba(34,211,238,.25),0 8px 30px -12px rgba(34,211,238,.35);
+  --accent:var(--cyan); --glow:0 0 0 1px rgba(var(--acc-rgb),.25),0 8px 30px -12px rgba(var(--acc-rgb),.35);
   --radius:14px; --shadow:0 10px 30px -15px rgba(0,0,0,.6);
   --grid:rgba(142,163,196,.12);
+  --acc-rgb:34,211,238; --acc2-rgb:59,130,246; --accent2:#3b82f6; --on-acc:#04121c; --font-title:Rajdhani,Inter,sans-serif; --font-body:Inter,system-ui,sans-serif; --fs:14px; --bg-img:none; --logo:48px;
 }
 :root[data-theme="light"]{
   --bg:#eef3fa; --bg2:#e5ecf7; --panel:#ffffff; --panel2:#f3f7fd; --line:#d6e0ef; --line2:#c3d1e6;
@@ -27,9 +29,9 @@
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{margin:0;height:100%}
-body{background:var(--bg);color:var(--text);font:14px/1.45 Inter,system-ui,sans-serif;
-  background-image:radial-gradient(1200px 600px at 85% -10%,rgba(34,211,238,.08),transparent 60%),radial-gradient(900px 500px at -10% 110%,rgba(167,139,250,.07),transparent 60%);background-attachment:fixed}
-h1,h2,h3,.hud{font-family:Rajdhani,Inter,sans-serif;letter-spacing:.04em}
+body{background:var(--bg);color:var(--text);font:var(--fs)/1.45 var(--font-body);
+  background-image:var(--bg-img),radial-gradient(1200px 600px at 85% -10%,rgba(var(--acc-rgb),.08),transparent 60%),radial-gradient(900px 500px at -10% 110%,rgba(var(--acc2-rgb),.07),transparent 60%);background-attachment:fixed}
+h1,h2,h3,.hud{font-family:var(--font-title);letter-spacing:.04em}
 .mono{font-family:"JetBrains Mono",Consolas,"DejaVu Sans Mono",monospace}
 button,input,select,textarea{font:inherit;color:inherit}
 a{color:var(--cyan)}
@@ -39,13 +41,13 @@ a{color:var(--cyan)}
 .side{position:sticky;top:0;height:100vh;background:linear-gradient(180deg,var(--bg2),var(--bg));border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:6px}
 .brand{display:flex;align-items:center;gap:10px;padding:4px 8px 18px}
 .brand svg{flex:none}
-.brand b{font-family:Rajdhani,Inter,sans-serif;font-size:20px;letter-spacing:.12em;line-height:1}
+.brand b{font-family:var(--font-title);font-size:20px;letter-spacing:.12em;line-height:1}
 .brand small{display:block;color:var(--cyan);font-size:11px;letter-spacing:.3em;margin-top:3px}
 .nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:600;border:1px solid transparent;transition:.15s}
 .nav a:hover{background:var(--panel);color:var(--text)}
-.nav a.on{background:linear-gradient(90deg,rgba(34,211,238,.16),rgba(34,211,238,.02));color:var(--text);border-color:rgba(34,211,238,.3)}
+.nav a.on{background:linear-gradient(90deg,rgba(var(--acc-rgb),.16),rgba(var(--acc-rgb),.02));color:var(--text);border-color:rgba(var(--acc-rgb),.3)}
 .nav a .ic{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:16px;background:var(--panel2)}
-.nav a.on .ic{background:var(--cyan);color:#04121c}
+.nav a.on .ic{background:var(--cyan);color:var(--on-acc)}
 .side .foot{margin-top:auto;font-size:12px;color:var(--dim);padding:8px}
 .status{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
@@ -62,8 +64,8 @@ main{min-width:0;padding:22px 28px 60px}
 /* ---------- ui ---------- */
 .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;border:1px solid var(--line2);background:var(--panel2);cursor:pointer;font-weight:600;transition:.15s;white-space:nowrap}
 .btn:hover{border-color:var(--cyan);color:var(--cyan)}
-.btn.pri{background:linear-gradient(135deg,var(--cyan),#3b82f6);border-color:transparent;color:#04121c}
-.btn.pri:hover{filter:brightness(1.1);color:#04121c}
+.btn.pri{background:linear-gradient(135deg,var(--cyan),var(--accent2));border-color:transparent;color:var(--on-acc)}
+.btn.pri:hover{filter:brightness(1.1);color:var(--on-acc)}
 .btn.ok{background:var(--green);border-color:transparent;color:#03140d}
 .btn.warn{background:transparent;border-color:var(--amber);color:var(--amber)}
 .btn.bad{background:transparent;border-color:var(--rose);color:var(--rose)}
@@ -79,7 +81,7 @@ main{min-width:0;padding:22px 28px 60px}
 .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
 .span2{grid-column:span 2}.span3{grid-column:span 3}
 .tag{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:600;background:var(--panel2);border:1px solid var(--line2);color:var(--muted);white-space:nowrap}
-.tag.c{color:var(--cyan);border-color:rgba(34,211,238,.35);background:rgba(34,211,238,.08)}
+.tag.c{color:var(--cyan);border-color:rgba(var(--acc-rgb),.35);background:rgba(var(--acc-rgb),.08)}
 .tag.a{color:var(--amber);border-color:rgba(251,191,36,.35);background:rgba(251,191,36,.08)}
 .tag.g{color:var(--green);border-color:rgba(52,211,153,.35);background:rgba(52,211,153,.08)}
 .tag.r{color:var(--rose);border-color:rgba(251,113,133,.35);background:rgba(251,113,133,.08)}
@@ -100,7 +102,7 @@ hr.s{border:0;border-top:1px solid var(--line);margin:16px 0}
 
 /* progress */
 .pb{height:10px;border-radius:999px;background:var(--panel2);overflow:hidden;border:1px solid var(--line)}
-.pb > i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--c1,var(--cyan)),var(--c2,#3b82f6));width:0;transition:width .9s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 12px -2px var(--c1,var(--cyan))}
+.pb > i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--c1,var(--cyan)),var(--c2,var(--accent2)));width:0;transition:width .9s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 12px -2px var(--c1,var(--cyan))}
 .pb.big{height:16px}
 .bars{display:flex;flex-direction:column;gap:12px}
 .bar .t{display:flex;justify-content:space-between;gap:8px;font-size:13px;margin-bottom:5px}
@@ -124,7 +126,7 @@ hr.s{border:0;border-top:1px solid var(--line);margin:16px 0}
 /* heatmap */
 .heat{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,12px);gap:3px;overflow-x:auto;padding-bottom:6px}
 .heat i{width:12px;height:12px;border-radius:3px;background:var(--panel2);border:1px solid var(--line)}
-.heat i.l1{background:rgba(34,211,238,.3);border-color:transparent}.heat i.l2{background:rgba(34,211,238,.55);border-color:transparent}.heat i.l3{background:rgba(34,211,238,.8);border-color:transparent}.heat i.l4{background:var(--cyan);border-color:transparent;box-shadow:0 0 6px var(--cyan)}
+.heat i.l1{background:rgba(var(--acc-rgb),.3);border-color:transparent}.heat i.l2{background:rgba(var(--acc-rgb),.55);border-color:transparent}.heat i.l3{background:rgba(var(--acc-rgb),.8);border-color:transparent}.heat i.l4{background:var(--cyan);border-color:transparent;box-shadow:0 0 6px var(--cyan)}
 .heat i.x{visibility:hidden}
 .legend{display:flex;gap:4px;align-items:center;font-size:11px;color:var(--dim);margin-top:6px}
 .legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
@@ -142,7 +144,7 @@ hr.s{border:0;border-top:1px solid var(--line);margin:16px 0}
 
 /* forms */
 .fsec{margin-bottom:16px}
-.fsec h3 .n{width:24px;height:24px;border-radius:7px;background:var(--cyan);color:#04121c;display:grid;place-items:center;font-size:13px}
+.fsec h3 .n{width:24px;height:24px;border-radius:7px;background:var(--cyan);color:var(--on-acc);display:grid;place-items:center;font-size:13px}
 .fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
 .fld label.l{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
 .fld label.l .req{color:var(--rose)}
@@ -159,7 +161,7 @@ input[type=date].in,input[type=time].in{color-scheme:dark}
 .seg label{cursor:pointer}
 .seg input{display:none}
 .seg span{display:block;padding:7px 14px;border-radius:8px;font-weight:600;font-size:13px;color:var(--muted);transition:.15s}
-.seg input:checked+span{background:var(--cyan);color:#04121c}
+.seg input:checked+span{background:var(--cyan);color:var(--on-acc)}
 .seg input:checked+span.ok{background:var(--green)}
 .seg input:checked+span.no{background:var(--rose);color:#fff}
 .seg input:checked+span.nuit{background:var(--violet);color:#fff}
@@ -173,8 +175,8 @@ input[type=date].in,input[type=time].in{color-scheme:dark}
 .cb{display:inline-flex;align-items:center;gap:8px;cursor:pointer;user-select:none;font-size:13px}
 .cb input{appearance:none;width:18px;height:18px;border-radius:5px;border:1.5px solid var(--line2);background:var(--bg2);display:grid;place-items:center;cursor:pointer;margin:0;flex:none}
 .cb input:checked{background:var(--cyan);border-color:var(--cyan)}
-.cb input:checked::after{content:"";width:5px;height:9px;border:solid #04121c;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
-.durbox{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:12px;background:linear-gradient(135deg,rgba(34,211,238,.12),rgba(59,130,246,.06));border:1px solid rgba(34,211,238,.3)}
+.cb input:checked::after{content:"";width:5px;height:9px;border:solid var(--on-acc);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.durbox{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:12px;background:linear-gradient(135deg,rgba(var(--acc-rgb),.12),rgba(var(--acc2-rgb),.06));border:1px solid rgba(var(--acc-rgb),.3)}
 .durbox .v{font-family:"JetBrains Mono",Consolas,monospace;font-size:26px;font-weight:700;color:var(--cyan)}
 .formbar{position:sticky;bottom:0;margin-top:16px;padding:12px 16px;border-radius:14px;background:color-mix(in srgb,var(--panel) 92%,transparent);backdrop-filter:blur(8px);border:1px solid var(--line2);display:flex;gap:10px;align-items:center;flex-wrap:wrap;z-index:5}
 
@@ -188,8 +190,8 @@ table.t th{position:sticky;top:0;background:var(--panel2);text-align:left;font-s
 table.t th.s::after{content:" ▾";color:var(--cyan)}table.t th.s.asc::after{content:" ▴"}
 table.t td{padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap;max-width:260px;overflow:hidden;text-overflow:ellipsis}
 table.t tbody tr{cursor:pointer;transition:background .1s}
-table.t tbody tr:hover td{background:rgba(34,211,238,.06)}
-table.t tbody tr.sel td{background:rgba(34,211,238,.12)}
+table.t tbody tr:hover td{background:rgba(var(--acc-rgb),.06)}
+table.t tbody tr.sel td{background:rgba(var(--acc-rgb),.12)}
 table.t td.mono{font-family:"JetBrains Mono",Consolas,monospace;font-size:12.5px}
 .tfoot{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:12px;color:var(--muted);font-size:13px}
 .tfoot b{color:var(--text);font-family:"JetBrains Mono"}
@@ -209,10 +211,10 @@ table.t td.mono{font-family:"JetBrains Mono",Consolas,monospace;font-size:12.5px
 .items .it{display:grid;grid-template-columns:1fr 130px auto auto auto;gap:8px;align-items:center;padding:6px 8px;border-radius:8px;background:var(--panel2);border:1px solid var(--line)}
 .items .it .in{min-height:32px;padding:5px 9px}
 .drop{border:2px dashed var(--line2);border-radius:14px;padding:26px;text-align:center;color:var(--muted);transition:.15s;cursor:pointer}
-.drop.over,.drop:hover{border-color:var(--cyan);color:var(--text);background:rgba(34,211,238,.05)}
+.drop.over,.drop:hover{border-color:var(--cyan);color:var(--text);background:rgba(var(--acc-rgb),.05)}
 .drop b{color:var(--cyan)}
 .note{padding:10px 12px;border-radius:10px;font-size:13px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3);color:var(--text)}
-.note.i{background:rgba(34,211,238,.07);border-color:rgba(34,211,238,.3)}
+.note.i{background:rgba(var(--acc-rgb),.07);border-color:rgba(var(--acc-rgb),.3)}
 
 /* toast & modal */
 .toasts{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:8px;z-index:100}
@@ -238,14 +240,74 @@ table.t td.mono{font-family:"JetBrains Mono",Consolas,monospace;font-size:12.5px
   .items .it{grid-template-columns:1fr auto auto}
   .items .it .cnt{display:none}
 }
+
+/* ---------- logo ---------- */
+.brand .logo{width:var(--logo);height:var(--logo);flex:none;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.45))}
+/* ---------- filigrane / effets ---------- */
+html.wm body::before{content:"";position:fixed;right:-6vmin;bottom:-6vmin;width:46vmin;height:46vmin;background:var(--wm-img,url(assets/emblem.webp)) center/contain no-repeat;opacity:var(--wm-op,.06);pointer-events:none;z-index:0}
+.app{position:relative;z-index:1}
+html.noanim *,html.noanim *::before,html.noanim *::after{animation:none!important;transition:none!important}
+html.glass .card,html.glass .side,html.glass .twrap{background:color-mix(in srgb,var(--panel) 70%,transparent)!important;backdrop-filter:blur(16px) saturate(1.3)}
+html.fx-ps5 body{background-image:var(--bg-img),radial-gradient(1400px 700px at 70% -20%,rgba(var(--acc-rgb),.22),transparent 60%),radial-gradient(1000px 600px at 0% 120%,rgba(var(--acc2-rgb),.25),transparent 60%),linear-gradient(180deg,var(--bg2),var(--bg))}
+html.fx-ps5 .btn{border-radius:999px}
+html.fx-ps5 .nav a.on{box-shadow:0 0 0 2px #fff inset,0 0 24px rgba(255,255,255,.25);background:rgba(255,255,255,.08)}
+html.fx-ps5 .card{transition:transform .2s,box-shadow .2s}html.fx-ps5 .card:hover{transform:scale(1.01);box-shadow:0 0 0 2px rgba(255,255,255,.5),0 20px 40px -20px rgba(var(--acc-rgb),.6)}
+html.fx-navy body{background-image:var(--bg-img),radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.5px),linear-gradient(180deg,var(--bg2),var(--bg));background-size:auto,28px 28px,auto}
+html.fx-navy .card{border-top:3px solid var(--cyan)}html.fx-navy .card h3{color:var(--cyan);letter-spacing:.12em}
+html.fx-navy .top h1{color:var(--cyan);text-shadow:0 2px 0 rgba(0,0,0,.4)}
+html.fx-win11 body{background-image:var(--bg-img),radial-gradient(900px 600px at 10% 0%,rgba(var(--acc2-rgb),.18),transparent 60%),radial-gradient(900px 600px at 100% 100%,rgba(var(--acc-rgb),.14),transparent 60%)}
+html.fx-win11 .card h3{text-transform:none;letter-spacing:0;font-weight:600}html.fx-win11 .top h1{text-transform:none;letter-spacing:0;font-weight:600}
+html.fx-win11 .nav a.on{background:color-mix(in srgb,var(--panel2) 80%,transparent);border-color:transparent;position:relative}
+html.fx-win11 .nav a.on::before{content:"";position:absolute;left:0;top:30%;bottom:30%;width:3px;border-radius:3px;background:var(--cyan)}
+html.fx-gamer .card{border:1px solid transparent;background:linear-gradient(var(--panel),var(--panel)) padding-box,linear-gradient(135deg,var(--cyan),var(--accent2),var(--violet)) border-box}
+html.fx-gamer .card:hover{box-shadow:0 0 22px -4px var(--accent2),0 0 30px -8px var(--cyan)}
+html.fx-gamer .brand b{background:linear-gradient(90deg,var(--cyan),var(--accent2),var(--amber),var(--cyan));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rgb 6s linear infinite}
+html.fx-gamer .top h1{text-shadow:0 0 18px rgba(var(--acc-rgb),.6)}
+@keyframes rgb{to{background-position:300% 0}}
+html.fx-nvg body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);mix-blend-mode:multiply}
+html.fx-nvg .top h1,html.fx-nvg .kpi .val{text-shadow:0 0 10px rgba(var(--acc-rgb),.7)}
+/* ---------- personnalisation des fenêtres ---------- */
+.card{position:relative}
+html:not(.ui-edit) .ux-h{display:none!important}
+html.ui-edit .ux-h{opacity:.35;outline:2px dashed var(--rose);outline-offset:-2px}
+.uxbar{display:none}
+html.ui-edit .uxbar{display:flex;position:absolute;top:8px;right:8px;gap:4px;z-index:5;background:var(--panel2);border:1px solid var(--line2);border-radius:10px;padding:3px;box-shadow:var(--shadow)}
+html.ui-edit .kpi .uxbar{top:auto;bottom:6px}
+.uxbar button{border:0;background:transparent;color:var(--text);cursor:pointer;width:26px;height:26px;border-radius:7px;font-size:13px;line-height:1}
+.uxbar button:hover{background:var(--cyan);color:var(--on-acc)}
+html.ui-edit [data-uxt]{outline:1px dashed rgba(var(--acc-rgb),.6);outline-offset:3px;border-radius:4px;cursor:text;min-width:20px;display:inline-block}
+html.ui-edit [data-uxt]:focus{outline:2px solid var(--cyan);background:rgba(var(--acc-rgb),.08)}
+.editbar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:95;display:none;gap:10px;align-items:center;padding:10px 14px;border-radius:14px;background:var(--panel2);border:1px solid var(--cyan);box-shadow:0 10px 40px -10px rgba(var(--acc-rgb),.6);font-weight:600}
+html.ui-edit .editbar{display:flex}
+/* ---------- apparence ---------- */
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.th{border:2px solid var(--line2);border-radius:14px;padding:8px;cursor:pointer;background:var(--panel2);transition:.15s;text-align:left;color:var(--text)}
+.th:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.th.on{border-color:var(--cyan);box-shadow:var(--glow)}
+.th .pv{height:86px;border-radius:9px;display:grid;grid-template-columns:28% 1fr;gap:5px;padding:6px;overflow:hidden}
+.th .pv i{display:block;border-radius:5px}
+.th .pv .pc{display:grid;grid-template-rows:14px 1fr 1fr;gap:5px}
+.th b{display:block;margin-top:8px;font-size:14px}.th small{color:var(--muted);font-size:11.5px}
+.colors{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.colors label{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;background:var(--panel2);border:1px solid var(--line);font-size:13px;font-weight:600;cursor:pointer}
+.colors input[type=color]{width:34px;height:34px;border:0;padding:0;background:none;cursor:pointer;border-radius:8px;flex:none}
+.colors label.ov{border-color:var(--cyan)}
+input[type=range].rg{width:100%;accent-color:var(--cyan)}
+.logo-pv{width:96px;height:96px;object-fit:contain;border-radius:14px;background:var(--bg2);border:1px solid var(--line2);padding:6px}
+.uxlist{display:flex;flex-direction:column;gap:6px;max-height:520px;overflow:auto;padding-right:4px}
+.uxrow{display:grid;grid-template-columns:auto 54px 1fr 150px auto;gap:8px;align-items:center;padding:6px 8px;border-radius:10px;background:var(--panel2);border:1px solid var(--line)}
+.uxrow.h{opacity:.55}
+.uxrow .in{min-height:34px;padding:6px 10px}
+.uxrow .k{font-size:11px;color:var(--dim)}
+@media (max-width:820px){.uxrow{grid-template-columns:auto 1fr auto}.uxrow .ic2,.uxrow .sz{display:none}}
 </style>
 </head>
 <body>
 <div class="app">
   <aside class="side">
     <div class="brand">
-      <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15.5" stroke="var(--cyan)" stroke-opacity=".5"/><path d="M17 5 L20 15 L30 18 L20 19.5 L17 29 L14 19.5 L4 18 L14 15 Z" fill="var(--cyan)"/></svg>
-      <div><b>CARNET DE VOL</b><small>DCS WORLD</small></div>
+      <img class="logo" id="brandLogo" src="assets/emblem.webp" alt="Emblème">
+      <div><b id="brandT">CARNET DE VOL</b><small id="brandS">DCS WORLD</small></div>
     </div>
     <nav class="nav">
       <a href="#dashboard" data-p="dashboard"><span class="ic">📊</span><span class="t">Tableau de bord</span></a>
@@ -253,10 +315,12 @@ table.t td.mono{font-family:"JetBrains Mono",Consolas,monospace;font-size:12.5px
       <a href="#vol" data-p="vol"><span class="ic">🛫</span><span class="t">Saisie / Édition</span></a>
       <a href="#sauvegarde" data-p="sauvegarde"><span class="ic">💾</span><span class="t">Sauvegarde</span></a>
       <a href="#parametres" data-p="parametres"><span class="ic">⚙️</span><span class="t">Paramétrage</span></a>
+      <a href="#apparence" data-p="apparence"><span class="ic">🎨</span><span class="t">Apparence</span></a>
     </nav>
     <div class="foot">
       <div class="status"><span class="dot" id="sDot"></span><span id="sTxt">Enregistré localement</span></div>
       <div id="sFile" style="margin-top:6px"></div>
+      <button class="btn sm" style="margin-top:10px;width:100%;justify-content:center" onclick="uxEdit(true)">✏️ Personnaliser l'écran</button>
     </div>
   </aside>
 
@@ -430,7 +494,7 @@ table.t td.mono{font-family:"JetBrains Mono",Consolas,monospace;font-size:12.5px
             <div class="fld"><label class="l">Objectif heures / an</label><input class="in" type="number" id="sObjH" min="1"></div>
             <div class="fld"><label class="l">Objectif vols / an</label><input class="in" type="number" id="sObjV" min="1"></div>
             <div class="fld"><label class="l">Pilote / indicatif</label><input class="in" id="sPilot" placeholder="ex. VIPER 1-1"></div>
-            <div class="fld"><label class="l">Thème</label><select class="in" id="sTheme"><option value="dark">Sombre (cockpit)</option><option value="light">Clair</option></select></div>
+            <div class="fld"><label class="l">Thème</label><select class="in" id="sTheme"></select></div>
           </div>
         </div>
         <div class="card span2"><h3>📅 Années (feuilles du classeur)</h3>
@@ -464,10 +528,62 @@ table.t td.mono{font-family:"JetBrains Mono",Consolas,monospace;font-size:12.5px
         <div style="overflow:auto"><table class="ctable" id="histTable"></table></div>
         <div class="row" style="margin-top:12px"><button class="btn" onclick="addHist()">＋ Ajouter une année d'historique</button></div>
       </div>
+          <div class="card" style="margin-top:16px"><h3>🪟 Fenêtres, menus & libellés <button class="btn sm pri" style="margin-left:auto" onclick="uxEdit(true)">✏️ Modifier directement à l'écran</button></h3>
+        <p class="muted" style="margin-top:0">Renommez, masquez, réordonnez et redimensionnez chaque élément de l'interface. Astuce : le mode « Modifier directement à l'écran » permet de cliquer sur un titre pour le réécrire et d'utiliser les boutons ◀ ▶ ⤢ 👁 sur chaque fenêtre.</p>
+        <div class="row" style="margin-bottom:12px"><div class="seg" id="uxTabs"></div><span class="sp" style="flex:1"></span><button class="btn sm bad" onclick="uxResetAll()">↺ Tout rétablir</button></div>
+        <div class="uxlist" id="uxList"></div>
+      </div>
     </section>
+    <!-- ===================== APPARENCE ===================== -->
+    <section class="page" id="p-apparence">
+      <div class="top"><div><h1>Apparence</h1><div class="sub">Thèmes, couleurs, polices, logo et fond d'écran</div></div><span class="sp"></span><button class="btn" onclick="uxEdit(true)">✏️ Personnaliser l'écran</button><button class="btn bad" onclick="apReset()">↺ Apparence par défaut</button></div>
+      <div class="card"><h3>🎮 Thèmes</h3><div class="themes" id="apThemes"></div></div>
+      <div class="grid g2" style="margin-top:16px">
+        <div class="card"><h3>🎨 Couleurs <button class="btn sm" style="margin-left:auto" onclick="apResetColors()">↺ Couleurs du thème</button></h3>
+          <div class="colors" id="apColors"></div>
+          <p class="dim" style="font-size:12px;margin-bottom:0">Les couleurs modifiées (cadre surligné) s'appliquent par-dessus le thème choisi.</p></div>
+        <div class="card"><h3>🔤 Polices & mise en forme</h3>
+          <div class="fgrid" style="grid-template-columns:1fr 1fr">
+            <div class="fld"><label class="l">Police des titres</label><select class="in" id="apFT"></select></div>
+            <div class="fld"><label class="l">Police du texte</label><select class="in" id="apFB"></select></div>
+            <div class="fld"><label class="l">Taille du texte <span id="apFSv" class="dim"></span></label><input type="range" class="rg" id="apFS" min="12" max="18" step="0.5"></div>
+            <div class="fld"><label class="l">Arrondi des fenêtres <span id="apRDv" class="dim"></span></label><input type="range" class="rg" id="apRD" min="0" max="28" step="1"></div>
+          </div>
+          <div class="row" style="margin-top:14px;gap:18px">
+            <label class="sw"><input type="checkbox" id="apGlass"><i></i> Effet verre</label>
+            <label class="sw"><input type="checkbox" id="apAnim"><i></i> Animations</label>
+            <label class="sw"><input type="checkbox" id="apWM"><i></i> Emblème en filigrane</label>
+          </div>
+        </div>
+      </div>
+      <div class="grid g2" style="margin-top:16px">
+        <div class="card"><h3>🛡️ Logo & identité</h3>
+          <div class="row" style="align-items:flex-start;gap:16px">
+            <img class="logo-pv" id="apLogoPv" src="assets/emblem.webp" alt="">
+            <div style="flex:1;min-width:200px">
+              <div class="fgrid" style="grid-template-columns:1fr 1fr">
+                <div class="fld"><label class="l">Titre</label><input class="in" id="apBT"></div>
+                <div class="fld"><label class="l">Sous-titre</label><input class="in" id="apBS"></div>
+                <div class="fld wide"><label class="l">Taille du logo <span id="apLSv" class="dim"></span></label><input type="range" class="rg" id="apLS" min="28" max="96" step="2"></div>
+              </div>
+              <div class="row" style="margin-top:10px"><button class="btn" onclick="$('#apLogoIn').click()">🖼 Changer le logo</button><button class="btn sm" onclick="apSet('logo',null)">↺ Emblème F/A-18</button></div>
+              <input type="file" id="apLogoIn" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+        <div class="card"><h3>🌄 Fond d'écran</h3>
+          <div class="row"><button class="btn" onclick="$('#apBgIn').click()">🖼 Choisir une image</button><button class="btn sm" onclick="apSet('bg',null)">✕ Retirer</button></div>
+          <input type="file" id="apBgIn" accept="image/*" hidden>
+          <div class="fld" style="margin-top:14px"><label class="l">Voile sur l'image <span id="apBVv" class="dim"></span></label><input type="range" class="rg" id="apBV" min="30" max="97" step="1"></div>
+          <p class="dim" style="font-size:12px;margin-bottom:0">L'image est réduite automatiquement et sauvegardée avec vos données.</p>
+        </div>
+      </div>
+    </section>
+
   </main>
 </div>
 
+<div class="editbar">✏️ Mode personnalisation — cliquez sur un titre pour le modifier · ◀ ▶ ordre · ⤢ taille · 👁 masquer <button class="btn sm pri" onclick="uxEdit(false)">✔ Terminer</button></div>
 <div class="toasts" id="toasts"></div>
 <div class="modal" id="modal"><div class="box"><h3 id="mT"></h3><div id="mB" class="muted"></div><div class="acts" id="mA"></div></div></div>
 
@@ -811,6 +927,7 @@ function route(){
   if(p==='vol'){ const id=location.hash.split('/')[1]; renderForm(id?findFlight(id)?.f:null); }
   if(p==='sauvegarde') renderSave();
   if(p==='parametres') renderParams();
+  if(p==='apparence') renderAppear();
   window.scrollTo(0,0);
 }
 window.addEventListener('hashchange',route);
@@ -1257,7 +1374,7 @@ function ghRender(){
 let curList=null;
 const TYPE_LABEL={date:'Date',time:'Heure',duration:'Durée (calcul auto)',select:'Menu déroulant',segment:'Choix (boutons)',yesno:'Interrupteur OUI/NON',yesno3:'OUI / NON / vide',checkbox:'Case à cocher',text:'Texte court',longtext:'Texte long',number:'Nombre'};
 function renderParams(){
-  $('#sObjH').value=S.settings.objH; $('#sObjV').value=S.settings.objV; $('#sPilot').value=S.settings.pilot||''; $('#sTheme').value=S.settings.theme||'dark';
+  $('#sObjH').value=S.settings.objH; $('#sObjV').value=S.settings.objV; $('#sPilot').value=S.settings.pilot||''; $('#sTheme').innerHTML=Object.entries(THEMES).map(([k,v])=>`<option value="${k}">${esc(v.name)}</option>`).join(''); $('#sTheme').value=AP().theme; uxRenderList();
   $('#yearChips').innerHTML=sheets().map(y=>{ const n=S.years[y].length; return `<span class="chip">📄 ${esc(y)} <b>${n}</b> ${n?'':`<button class="btn sm bad" style="padding:0 6px" onclick="delYear('${esc(y)}')">✕</button>`}</span>`; }).join('');
   // colonnes
   $('#colTable').innerHTML=`<tr><th>#</th><th>Excel</th><th>Libellé (en-tête)</th><th>Type</th><th>Dans le carnet</th><th>Obligatoire</th><th></th></tr>`+
@@ -1302,17 +1419,174 @@ function addYear(){ const y=$('#newYear').value.trim(); if(!/^\d{4}$/.test(y)) r
 function delYear(y){ if(S.years[y]?.length) return; delete S.years[y]; persist('Feuille '+y+' supprimée'); renderParams(); }
 async function addHist(){ const y=+(await promptBox('Historique','Année')); if(!y||y<1950) return; if(S.hist.some(h=>h.year===y)) return toast('Année déjà présente','w'); S.hist.push({year:y,vols:0,heures:0}); persist(); renderParams(); }
 async function delHist(i){ if(!await confirmBox('Supprimer',`Supprimer l'historique ${S.hist[i].year} ?`)) return; S.hist.splice(i,1); persist(); renderParams(); }
-function applyTheme(){ document.documentElement.dataset.theme=S.settings.theme||'dark'; chartDefaults(); }
+function applyTheme(){ apApply(); chartDefaults(); if(REG.length) uxApply(); }
+
+/* ================= APPARENCE ================= */
+const FONTS={'Rajdhani':'Rajdhani,Inter,sans-serif','Inter':'Inter,system-ui,sans-serif','Orbitron':'Orbitron,Rajdhani,sans-serif','Exo 2':'"Exo 2",Inter,sans-serif','Saira Stencil One':'"Saira Stencil One",Rajdhani,sans-serif','Oswald':'Oswald,sans-serif','Bebas Neue':'"Bebas Neue",Rajdhani,sans-serif','Roboto Condensed':'"Roboto Condensed",sans-serif','Share Tech Mono':'"Share Tech Mono",monospace','JetBrains Mono':'"JetBrains Mono",monospace','Segoe UI (Windows 11)':'"Segoe UI Variable Display","Segoe UI Variable Text","Segoe UI",system-ui,sans-serif','Système':'system-ui,-apple-system,"Segoe UI",Roboto,sans-serif'};
+const DARKX={sky:'#60a5fa',orange:'#fb923c',lime:'#a3e635',pink:'#f472b6'}, LIGHTX={sky:'#2563eb',orange:'#ea580c',lime:'#65a30d',pink:'#db2777'};
+const THEMES={
+ cockpit:{name:'Cockpit (origine)',desc:'Sombre, cyan tactique',mode:'dark',ft:'Rajdhani',fb:'Inter',rd:14,
+  v:{bg:'#070d1a',bg2:'#0b1426',panel:'#0f1a30',panel2:'#14223d',line:'#1f3054',line2:'#2a3f68',text:'#e7eef9',muted:'#8ea3c4',dim:'#5d7398',cyan:'#22d3ee',accent2:'#3b82f6',onacc:'#04121c',amber:'#fbbf24',green:'#34d399',rose:'#fb7185',violet:'#a78bfa'}},
+ usnavy:{name:'US NAVY',desc:'Bleu marine & or, esprit escadron',mode:'dark',ft:'Saira Stencil One',fb:'Inter',rd:6,fx:'navy',wm:true,
+  v:{bg:'#061226',bg2:'#0a1a34',panel:'#0e2142',panel2:'#132b54',line:'#1f3a6b',line2:'#2c4d87',text:'#f6f1e3',muted:'#b4bfd3',dim:'#7486a6',cyan:'#f2b705',accent2:'#c8102e',onacc:'#1a1200',amber:'#ffd65a',green:'#4cc38a',rose:'#e23b4e',violet:'#8fa8ff'}},
+ ps5:{name:'PS5',desc:'Noir profond, bleu PlayStation, boutons pilule',mode:'dark',ft:'Exo 2',fb:'Inter',rd:20,fx:'ps5',
+  v:{bg:'#02040b',bg2:'#060b1a',panel:'#0b1224',panel2:'#111a33',line:'#1b2747',line2:'#2a3a66',text:'#f5f7ff',muted:'#9aa8c7',dim:'#5f6b8a',cyan:'#3d8bff',accent2:'#0050d8',onacc:'#ffffff',amber:'#ffc94a',green:'#3ee08f',rose:'#ff5a7a',violet:'#b28cff'}},
+ win11:{name:'PC Windows 11',desc:'Clair, effet Mica, Segoe UI',mode:'light',ft:'Segoe UI (Windows 11)',fb:'Segoe UI (Windows 11)',rd:8,fx:'win11',glass:true,
+  v:{bg:'#eef1f8',bg2:'#e6ebf5',panel:'#ffffff',panel2:'#f6f8fc',line:'#e1e5ee',line2:'#cfd6e4',text:'#1b1b1f',muted:'#5c6170',dim:'#8a90a0',cyan:'#0067c0',accent2:'#4cc2ff',onacc:'#ffffff',amber:'#c47f00',green:'#0f7b0f',rose:'#c42b1c',violet:'#8764b8'}},
+ win11dark:{name:'PC Windows 11 sombre',desc:'Mode sombre Windows, accent bleu',mode:'dark',ft:'Segoe UI (Windows 11)',fb:'Segoe UI (Windows 11)',rd:8,fx:'win11',glass:true,
+  v:{bg:'#1c1c1c',bg2:'#202020',panel:'#2b2b2b',panel2:'#323232',line:'#3a3a3a',line2:'#474747',text:'#ffffff',muted:'#c5c5c5',dim:'#8a8a8a',cyan:'#60cdff',accent2:'#0078d4',onacc:'#00121f',amber:'#fce100',green:'#6ccb5f',rose:'#ff99a4',violet:'#d6a6ff'}},
+ gamer:{name:'GAMER',desc:'Néon RGB, bordures lumineuses',mode:'dark',ft:'Orbitron',fb:'Exo 2',rd:4,fx:'gamer',
+  v:{bg:'#06030d',bg2:'#0b0618',panel:'#120a24',panel2:'#1a0f33',line:'#2b1a52',line2:'#3d2670',text:'#f3ecff',muted:'#b39ddb',dim:'#7a64a3',cyan:'#00ff9c',accent2:'#ff00e6',onacc:'#02140c',amber:'#ffe600',green:'#00ff9c',rose:'#ff3366',violet:'#b14bff'}},
+ marine:{name:'Marine nationale',desc:'Bleu-blanc-rouge, Rafale M',mode:'dark',ft:'Rajdhani',fb:'Inter',rd:10,
+  v:{bg:'#0a1022',bg2:'#0e1630',panel:'#121c3b',panel2:'#182549',line:'#243461',line2:'#33477e',text:'#f2f5fb',muted:'#a3b0cc',dim:'#6a789a',cyan:'#4f8cff',accent2:'#ef4135',onacc:'#ffffff',amber:'#f5c542',green:'#3ccf91',rose:'#ef4135',violet:'#a99bff'}},
+ nvg:{name:'Vision nocturne',desc:'Vert NVG, lignes de balayage',mode:'dark',ft:'Share Tech Mono',fb:'Share Tech Mono',rd:2,fx:'nvg',
+  v:{bg:'#010803',bg2:'#031006',panel:'#05160a',panel2:'#08200f',line:'#0f3a1b',line2:'#165226',text:'#c9ffd6',muted:'#6fd48a',dim:'#3f8a55',cyan:'#39ff6a',accent2:'#1fb84a',onacc:'#011005',amber:'#d8ff4a',green:'#39ff6a',rose:'#ff6b5a',violet:'#8affc1'}},
+ sunset:{name:'Crépuscule',desc:'Orange & rose, retour sur le pont',mode:'dark',ft:'Bebas Neue',fb:'Inter',rd:12,
+  v:{bg:'#120914',bg2:'#1a0d1c',panel:'#221126',panel2:'#2c1631',line:'#3d1f43',line2:'#552b5c',text:'#fff1e6',muted:'#e0b3a6',dim:'#9a6f78',cyan:'#ff8a3d',accent2:'#ff3d7f',onacc:'#1a0800',amber:'#ffc145',green:'#59d39b',rose:'#ff4d6d',violet:'#c084fc'}},
+ clair:{name:'Clair',desc:'Fond clair, lisible en journée',mode:'light',ft:'Rajdhani',fb:'Inter',rd:14,
+  v:{bg:'#eef3fa',bg2:'#e5ecf7',panel:'#ffffff',panel2:'#f3f7fd',line:'#d6e0ef',line2:'#c3d1e6',text:'#0f1d36',muted:'#4f6386',dim:'#8394b3',cyan:'#0891b2',accent2:'#2563eb',onacc:'#ffffff',amber:'#d97706',green:'#059669',rose:'#e11d48',violet:'#7c3aed'}}
+};
+const AP_COLORS=[['cyan','Couleur principale'],['accent2','Couleur secondaire'],['bg','Fond'],['bg2','Fond du menu'],['panel','Fenêtres'],['panel2','Fenêtres (2)'],['line','Bordures'],['text','Texte'],['muted','Texte secondaire'],['onacc','Texte sur boutons'],['green','Succès'],['amber','Jour / alerte'],['rose','Danger'],['violet','Nuit']];
+function UI(){ const s=S.settings; if(!s.ui) s.ui={items:{},ap:{theme:s.theme==='light'?'clair':'cockpit'}}; s.ui.items??={}; s.ui.ap??={theme:'cockpit'}; return s.ui; }
+const AP=()=>UI().ap;
+const rgbOf=h=>{ h=String(h||'#000').replace('#',''); if(h.length===3) h=h.split('').map(c=>c+c).join(''); return [0,2,4].map(i=>parseInt(h.substr(i,2),16)||0).join(','); };
+const apTh=()=>THEMES[AP().theme]||THEMES.cockpit;
+const apVars=()=>({...apTh().v,...(AP().c||{})});
+function apApply(){
+  const a=AP(), th=apTh(), v=apVars(), R=document.documentElement, st=R.style, light=th.mode==='light';
+  Object.entries({...(light?LIGHTX:DARKX),...v}).forEach(([k,c])=>st.setProperty(k==='onacc'?'--on-acc':'--'+k,c));
+  st.setProperty('--acc-rgb',rgbOf(v.cyan)); st.setProperty('--acc2-rgb',rgbOf(v.accent2));
+  st.setProperty('--grid',`rgba(${rgbOf(v.muted)},.13)`);
+  st.setProperty('--glow',`0 0 0 1px rgba(${rgbOf(v.cyan)},.25),0 8px 30px -12px rgba(${rgbOf(v.cyan)},.35)`);
+  st.setProperty('--shadow',light?'0 8px 24px -16px rgba(15,29,54,.35)':'0 10px 30px -15px rgba(0,0,0,.6)');
+  st.setProperty('--font-title',FONTS[a.ft||th.ft]||FONTS.Rajdhani); st.setProperty('--font-body',FONTS[a.fb||th.fb]||FONTS.Inter);
+  st.setProperty('--radius',(a.rd??th.rd)+'px'); st.setProperty('--fs',(a.fs||14)+'px'); st.setProperty('--logo',(a.ls||48)+'px');
+  R.dataset.theme=light?'light':'dark';
+  [...R.classList].filter(c=>c.startsWith('fx-')).forEach(c=>R.classList.remove(c)); if(th.fx) R.classList.add('fx-'+th.fx);
+  R.classList.toggle('glass',a.glass??!!th.glass); R.classList.toggle('noanim',a.anim===false); R.classList.toggle('wm',a.wm??!!th.wm);
+  if(a.bg){ const o=(a.bv??80)/100, b=rgbOf(v.bg); st.setProperty('--bg-img',`linear-gradient(rgba(${b},${o}),rgba(${b},${o})),url("${a.bg}")`); document.body.style.backgroundSize='cover'; document.body.style.backgroundPosition='center'; }
+  else { st.setProperty('--bg-img','none'); document.body.style.backgroundSize=''; document.body.style.backgroundPosition=''; }
+  st.setProperty('--wm-img',a.logo?`url("${a.logo}")`:'url(assets/emblem.webp)');
+  const lg=$('#brandLogo'); if(lg) lg.src=a.logo||'assets/emblem.webp';
+  if($('#brandT')) $('#brandT').textContent=a.bt||'CARNET DE VOL';
+  if($('#brandS')) $('#brandS').textContent=a.bs??'DCS WORLD';
+  document.querySelector('meta[name=theme-color]')?.setAttribute('content',v.bg2);
+  [v.cyan,v.amber,v.violet,v.green,v.rose,v.accent2].forEach((c,i)=>PALETTE[i]=c);
+}
+let apTimer;
+function apSave(rerender=true){ persist(); applyTheme(); clearTimeout(apTimer); if(rerender) apTimer=setTimeout(()=>{ const p=(location.hash||'#dashboard').slice(1); if(p==='apparence') renderAppear(); },120); }
+function apTheme(k){ const a=AP(); Object.assign(a,{theme:k,c:{},ft:undefined,fb:undefined,rd:undefined,glass:undefined,wm:undefined}); apSave(); toast('🎨 Thème « '+THEMES[k].name+' » appliqué'); }
+function apSet(k,v){ AP()[k]=v; apSave(); }
+function apColor(k,v){ const a=AP(); a.c??={}; if(v===null) delete a.c[k]; else a.c[k]=v; apSave(false); clearTimeout(apTimer); apTimer=setTimeout(renderAppear,250); }
+async function apResetColors(){ AP().c={}; apSave(); }
+async function apReset(){ if(!await confirmBox('Apparence par défaut','Revenir au thème Cockpit d\'origine, au logo F/A-18 et aux réglages par défaut ? (les libellés et fenêtres personnalisés sont conservés)','Rétablir','pri')) return; UI().ap={theme:'cockpit'}; apSave(); }
+function renderAppear(){
+  const a=AP(), th=apTh(), v=apVars();
+  $('#apThemes').innerHTML=Object.entries(THEMES).map(([k,t])=>{ const x=t.v; return `<button class="th ${k===a.theme?'on':''}" onclick="apTheme('${k}')"><div class="pv" style="background:${x.bg}"><i style="background:${x.bg2};border:1px solid ${x.line}"></i><div class="pc"><i style="background:linear-gradient(90deg,${x.cyan},${x.accent2})"></i><i style="background:${x.panel};border:1px solid ${x.line}"></i><i style="background:${x.panel2};border:1px solid ${x.line};border-top:3px solid ${x.cyan}"></i></div></div><b style="font-family:${esc(FONTS[t.ft])}">${esc(t.name)}</b><small>${esc(t.desc)}</small></button>`; }).join('');
+  $('#apColors').innerHTML=AP_COLORS.map(([k,l])=>`<label class="${a.c&&a.c[k]?'ov':''}" title="${a.c&&a.c[k]?'Couleur modifiée — clic droit pour revenir au thème':''}" oncontextmenu="event.preventDefault();apColor('${k}',null)"><input type="color" value="${v[k]}" oninput="apColor('${k}',this.value)">${l}</label>`).join('');
+  const fo=Object.keys(FONTS).map(f=>`<option value="${esc(f)}">${esc(f)}</option>`).join('');
+  $('#apFT').innerHTML=fo; $('#apFB').innerHTML=fo; $('#apFT').value=a.ft||th.ft; $('#apFB').value=a.fb||th.fb;
+  $('#apFS').value=a.fs||14; $('#apFSv').textContent=(a.fs||14)+' px';
+  $('#apRD').value=a.rd??th.rd; $('#apRDv').textContent=(a.rd??th.rd)+' px';
+  $('#apGlass').checked=a.glass??!!th.glass; $('#apAnim').checked=a.anim!==false; $('#apWM').checked=a.wm??!!th.wm;
+  $('#apBT').value=a.bt||'CARNET DE VOL'; $('#apBS').value=a.bs??'DCS WORLD';
+  $('#apLS').value=a.ls||48; $('#apLSv').textContent=(a.ls||48)+' px'; $('#apLogoPv').src=a.logo||'assets/emblem.webp';
+  $('#apBV').value=a.bv??80; $('#apBVv').textContent=(a.bv??80)+' %';
+}
+function imgToData(file,max,type,q){ return new Promise((res,rej)=>{ const r=new FileReader(); r.onerror=rej; r.onload=()=>{ const im=new Image(); im.onerror=()=>rej(new Error('image illisible')); im.onload=()=>{ const s=Math.min(1,max/Math.max(im.width,im.height)); const c=document.createElement('canvas'); c.width=Math.round(im.width*s); c.height=Math.round(im.height*s); c.getContext('2d').drawImage(im,0,0,c.width,c.height); res(c.toDataURL(type,q)); }; im.src=r.result; }; r.readAsDataURL(file); }); }
+function apInitEvents(){
+  $('#apFT').onchange=e=>apSet('ft',e.target.value); $('#apFB').onchange=e=>apSet('fb',e.target.value);
+  $('#apFS').oninput=e=>{ AP().fs=+e.target.value; $('#apFSv').textContent=e.target.value+' px'; applyTheme(); }; $('#apFS').onchange=()=>persist();
+  $('#apRD').oninput=e=>{ AP().rd=+e.target.value; $('#apRDv').textContent=e.target.value+' px'; applyTheme(); }; $('#apRD').onchange=()=>persist();
+  $('#apLS').oninput=e=>{ AP().ls=+e.target.value; $('#apLSv').textContent=e.target.value+' px'; applyTheme(); }; $('#apLS').onchange=()=>persist();
+  $('#apBV').oninput=e=>{ AP().bv=+e.target.value; $('#apBVv').textContent=e.target.value+' %'; applyTheme(); }; $('#apBV').onchange=()=>persist();
+  $('#apGlass').onchange=e=>apSet('glass',e.target.checked); $('#apAnim').onchange=e=>apSet('anim',e.target.checked); $('#apWM').onchange=e=>apSet('wm',e.target.checked);
+  $('#apBT').onchange=e=>apSet('bt',e.target.value.trim()); $('#apBS').onchange=e=>apSet('bs',e.target.value.trim());
+  $('#apLogoIn').onchange=async e=>{ const f=e.target.files[0]; e.target.value=''; if(!f) return; try{ apSet('logo',await imgToData(f,256,'image/png')); toast('Logo mis à jour'); }catch(err){ toast('Logo : '+err.message,'e'); } };
+  $('#apBgIn').onchange=async e=>{ const f=e.target.files[0]; e.target.value=''; if(!f) return; try{ apSet('bg',await imgToData(f,1920,'image/jpeg',.8)); toast('Fond d\'écran appliqué'); }catch(err){ toast('Fond : '+err.message,'e'); } };
+}
+
+/* ================= PERSONNALISATION DES FENÊTRES ================= */
+const REG=[]; const uxPages={};
+const slug=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)||'x';
+const uxIt=k=>UI().items[k]||{};
+function uxSetIt(k,f){ const I=UI().items; const it=I[k]??={}; f(it); Object.keys(it).forEach(x=>{ if(it[x]===undefined||it[x]==='') delete it[x]; }); if(!Object.keys(it).length) delete I[k]; persist(); uxApply(); if($('#uxList')&&(location.hash==='#parametres')) uxRenderList(); }
+function uxBar(key,opts={}){ return `<div class="uxbar" contenteditable="false">${opts.noMove?'':`<button title="Avant" onclick="event.stopPropagation();uxMove('${key}',-1)">◀</button><button title="Après" onclick="event.stopPropagation();uxMove('${key}',1)">▶</button>`}${opts.noSize?'':`<button title="Taille" onclick="event.stopPropagation();uxSize('${key}')">⤢</button>`}<button title="Masquer / afficher" onclick="event.stopPropagation();uxHide('${key}')">👁</button><button title="Rétablir" onclick="event.stopPropagation();uxReset('${key}')">↺</button></div>`; }
+function wrapTitle(h){ const tn=[...h.childNodes].filter(n=>n.nodeType===3); const txt=tn.map(n=>n.textContent).join(' ').replace(/\s+/g,' ').trim(); const sp=document.createElement('span'); sp.textContent=txt; if(tn.length){ h.insertBefore(sp,tn[0]); tn.forEach(n=>n.remove()); } else h.prepend(sp); return sp; }
+function uxInit(){
+  $$('.nav a').forEach((a,i)=>{ const p=a.dataset.p, key='nav:'+p, t=a.querySelector('.t'), ic=a.querySelector('.ic'); t.dataset.uxt=key; uxPages[p]=t.textContent;
+    REG.push({key,page:'_menu',kind:'nav',el:t,ic,tgt:a,i,def:{t:t.textContent,ic:ic.textContent},noHide:p==='parametres'}); });
+  $$('section.page').forEach(sec=>{ const p=sec.id.slice(2); const used={};
+    const h1=sec.querySelector('.top h1'); if(h1&&!h1.id){ h1.dataset.uxt='h1:'+p; REG.push({key:'h1:'+p,page:p,kind:'text',el:h1,def:{t:h1.textContent},lab:'Titre de la page'}); }
+    const sb=sec.querySelector('.top .sub'); if(sb&&!sb.id){ sb.dataset.uxt='sub:'+p; REG.push({key:'sub:'+p,page:p,kind:'text',el:sb,def:{t:sb.textContent},lab:'Sous-titre'}); }
+    let idx=0;
+    sec.querySelectorAll('.card').forEach(c=>{ if(c.closest('#form,#kpis')||c.classList.contains('kpi')) return;
+      const h=c.querySelector(':scope>h3'); let el=null, def='Barre de recherche et filtres';
+      const full=h?h.textContent.replace(/\s+/g,' ').trim():def;
+      if(h){ el=wrapTitle(h); def=el.textContent; }
+      let key='card:'+p+':'+slug(full); if(used[key]) key+='-'+(++used[key]); else used[key]=1;
+      if(el) el.dataset.uxt=key;
+      c.insertAdjacentHTML('afterbegin',uxBar(key)); c.dataset.ux=key;
+      REG.push({key,page:p,kind:'card',el,tgt:c,i:idx++,def:{t:def},lab:full!==def?'Fenêtre · '+full:'Fenêtre'}); });
+  });
+  document.addEventListener('focusout',e=>{ const el=e.target; if(!el.dataset||!el.dataset.uxt||!document.documentElement.classList.contains('ui-edit')) return; const r=REG.find(x=>x.key===el.dataset.uxt); if(!r) return; const v=el.textContent.replace(/\s+/g,' ').trim(); uxSetIt(r.key,it=>{ it.t=(v&&v!==r.def.t)?v:undefined; }); });
+  document.addEventListener('keydown',e=>{ if(e.target.dataset&&e.target.dataset.uxt&&e.key==='Enter'){ e.preventDefault(); e.target.blur(); } if(e.key==='Escape'&&document.documentElement.classList.contains('ui-edit')) uxEdit(false); });
+  document.addEventListener('click',e=>{ if(document.documentElement.classList.contains('ui-edit')&&e.target.closest('.nav a [data-uxt]')) e.preventDefault(); },true);
+  apInitEvents();
+}
+function uxKpis(){
+  $$('#kpis .kpi').forEach((k,i)=>{ const key='kpi:'+i, lbl=k.querySelector('.lbl'); let r=REG.find(x=>x.key===key);
+    if(!r){ r={key,page:'dashboard',kind:'kpi',i,def:{t:lbl.textContent}}; REG.push(r); }
+    r.el=lbl; r.tgt=k; lbl.dataset.uxt=key; k.dataset.ux=key; k.insertAdjacentHTML('afterbegin',uxBar(key,{noSize:false})); });
+  uxApply(); if(document.documentElement.classList.contains('ui-edit')) $$('#kpis [data-uxt]').forEach(e=>e.contentEditable='true');
+}
+const _renderDashOrig=renderDash; renderDash=function(){ _renderDashOrig.apply(this,arguments); uxKpis(); };
+const uxOrd=r=>uxIt(r.key).o??r.i*10;
+function uxApply(){
+  REG.forEach(r=>{ const it=uxIt(r.key);
+    if(r.el && document.activeElement!==r.el) r.el.textContent=it.t??r.def.t;
+    if(r.ic) r.ic.textContent=it.ic??r.def.ic;
+    const tg=r.kind==='text'?r.el:r.tgt; if(!tg) return;
+    tg.classList.toggle('ux-h',!!it.h&&!r.noHide);
+    if(r.kind!=='text') tg.style.order=it.o??'';
+    if(r.kind==='card'||r.kind==='kpi') tg.style.gridColumn=({n:'span 1',l:'span 2',f:'1 / -1'})[it.w]||'';
+  });
+}
+function uxSibs(r){ const par=r.tgt.parentElement; return REG.filter(x=>x.tgt&&x.tgt.parentElement===par&&x.kind===r.kind).sort((a,b)=>uxOrd(a)-uxOrd(b)); }
+function uxMove(key,d){ const r=REG.find(x=>x.key===key); if(!r||!r.tgt) return; const L=uxSibs(r); const i=L.indexOf(r), j=i+d; if(j<0||j>=L.length) return toast('Déjà en '+(d<0?'première':'dernière')+' position','w'); [L[i],L[j]]=[L[j],L[i]];
+  const I=UI().items; L.forEach((x,n)=>{ (I[x.key]??={}).o=n*10; }); persist(); uxApply(); if(location.hash==='#parametres') uxRenderList(); }
+function uxSize(key){ const seq=[undefined,'n','l','f'], lab={undefined:'taille d\'origine',n:'petite (1 colonne)',l:'large (2 colonnes)',f:'pleine largeur'}; let nw; uxSetIt(key,it=>{ nw=seq[(seq.indexOf(it.w)+1)%seq.length]; it.w=nw; }); toast('Taille : '+lab[nw]); setTimeout(()=>Object.values(charts).forEach(c=>c.resize&&c.resize()),60); }
+function uxHide(key){ const r=REG.find(x=>x.key===key); if(r&&r.noHide) return toast('Le menu Paramétrage ne peut pas être masqué','w'); let h; uxSetIt(key,it=>{ it.h=it.h?undefined:true; h=it.h; }); toast(h?'Élément masqué (visible en mode personnalisation)':'Élément affiché'); }
+function uxReset(key){ const I=UI().items; delete I[key]; persist(); uxApply(); if(location.hash==='#parametres') uxRenderList(); }
+async function uxResetAll(){ if(!await confirmBox('Tout rétablir','Rétablir tous les titres, menus, positions, tailles et visibilités d\'origine ?','Rétablir','pri')) return; UI().items={}; persist(); uxApply(); uxRenderList(); }
+function uxEdit(on){ const R=document.documentElement; R.classList.toggle('ui-edit',on); $$('[data-uxt]').forEach(e=>{ if(on) e.contentEditable='true'; else e.removeAttribute('contenteditable'); });
+  if(on){ toast('✏️ Mode personnalisation activé'); } else { uxApply(); toast('✔ Personnalisation enregistrée'); } }
+let uxTab='_menu';
+function uxRenderList(){
+  if(!$('#uxList')) return;
+  const pages=[['_menu','☰ Menu'],...$$('.nav a').map(a=>[a.dataset.p,(uxIt('nav:'+a.dataset.p).ic??a.querySelector('.ic').textContent)+' '+(uxIt('nav:'+a.dataset.p).t??uxPages[a.dataset.p])])];
+  $('#uxTabs').innerHTML=pages.map(([k,l])=>`<label><input type="radio" name="uxt" ${k===uxTab?'checked':''} onchange="uxTab='${k}';uxRenderList()"><span>${esc(l)}</span></label>`).join('');
+  const L=REG.filter(r=>r.page===uxTab).sort((a,b)=>(a.kind==='text'?-1:0)-(b.kind==='text'?-1:0)||a.kind.localeCompare(b.kind)||uxOrd(a)-uxOrd(b));
+  const kindLab={nav:'Entrée du menu',card:'Fenêtre',kpi:'Compteur',text:''};
+  $('#uxList').innerHTML= L.length? L.map(r=>{ const it=uxIt(r.key); const mv=r.kind!=='text';
+    return `<div class="uxrow ${it.h?'h':''}">
+      <div class="row" style="gap:4px;flex-wrap:nowrap">${mv?`<button class="btn sm" onclick="uxMove('${r.key}',-1)">↑</button><button class="btn sm" onclick="uxMove('${r.key}',1)">↓</button>`:'<span class="dim" style="width:62px"></span>'}</div>
+      <div class="ic2">${r.kind==='nav'?`<input class="in" style="text-align:center" value="${esc(it.ic??r.def.ic)}" onchange="uxSetIt('${r.key}',x=>x.ic=(this.value.trim()&&this.value.trim()!==REG.find(z=>z.key==='${r.key}').def.ic)?this.value.trim():undefined)" title="Icône (emoji)">`:''}</div>
+      <div><input class="in" value="${esc(it.t??r.def.t)}" placeholder="${esc(r.def.t)}" onchange="uxSetIt('${r.key}',x=>x.t=(this.value.trim()&&this.value.trim()!==REG.find(z=>z.key==='${r.key}').def.t)?this.value.trim():undefined)"><div class="k">${esc(r.lab||kindLab[r.kind])}${it.t?' · origine : '+esc(r.def.t):''}</div></div>
+      <div class="sz">${r.kind==='card'||r.kind==='kpi'?`<select class="in" onchange="uxSetIt('${r.key}',x=>x.w=this.value||undefined);setTimeout(()=>Object.values(charts).forEach(c=>c.resize&&c.resize()),60)"><option value="">Taille d'origine</option><option value="n" ${it.w==='n'?'selected':''}>Petite</option><option value="l" ${it.w==='l'?'selected':''}>Large</option><option value="f" ${it.w==='f'?'selected':''}>Pleine largeur</option></select>`:''}</div>
+      <div class="row" style="gap:6px;flex-wrap:nowrap">${r.noHide?'<span class="tag">toujours visible</span>':`<label class="sw" title="Visible"><input type="checkbox" ${it.h?'':'checked'} onchange="uxSetIt('${r.key}',x=>x.h=this.checked?undefined:true)"><i></i></label>`}<button class="btn sm" title="Rétablir" onclick="uxReset('${r.key}')">↺</button></div>
+    </div>`; }).join('') : '<div class="empty">Ouvrez une fois le tableau de bord pour lister ses compteurs.</div>';
+}
 
 /* ================= INIT ================= */
-load(); applyTheme(); setStatus(true, S.savedAt?undefined:'Données du fichier d\'origine');
+load(); uxInit(); applyTheme(); setStatus(true, S.savedAt?undefined:'Données du fichier d\'origine');
 $('#dYear').onchange=renderDash;
 ['#fq'].forEach(i=>$(i).oninput=renderTable);
 ['#fYear','#fAvion','#fMission','#fCarte','#fNuit','#fJour','#fVR','#fRav','#fPA','#fObj'].forEach(i=>$(i).onchange=renderTable);
 $('#sObjH').onchange=e=>{ S.settings.objH=Math.max(1,+e.target.value||1); persist(); };
 $('#sObjV').onchange=e=>{ S.settings.objV=Math.max(1,+e.target.value||1); persist(); };
 $('#sPilot').onchange=e=>{ S.settings.pilot=e.target.value.trim(); persist(); };
-$('#sTheme').onchange=e=>{ S.settings.theme=e.target.value; persist(); applyTheme(); };
+$('#sTheme').onchange=e=>apTheme(e.target.value);
 $('#autoWrite').onchange=e=>{ S.settings.autoWrite=e.target.checked; persist(); };
 $('#ncType').onchange=()=>$('#ncOptW').style.display=$('#ncType').value==='select'?'':'none'; $('#ncType').onchange();
 $('#liNew').onkeydown=e=>{ if(e.key==='Enter') addItem(); };
@@ -1325,7 +1599,7 @@ window.addEventListener('beforeunload',e=>{ if(fileHandle&&!S.settings.autoWrite
 if(!window.Chart||!window.ExcelJS) toast('Bibliothèques non chargées : connexion internet requise au premier lancement','e');
 $('#ghAuto').onchange=e=>{ GH.auto=e.target.checked; ghStore(); if(GH.auto) ghQueue(); };
 try{ navigator.storage&&navigator.storage.persist&&navigator.storage.persist(); }catch(e){}
-route();
+route(); uxApply();
 ghPull(false);
 </script>
 </body>
