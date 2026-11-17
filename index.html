@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Carnet de Vol AO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Orbitron:wght@500;700&family=Exo+2:wght@400;600;700&family=Saira+Stencil+One&family=Oswald:wght@500;600&family=Bebas+Neue&family=Share+Tech+Mono&family=Roboto+Condensed:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Orbitron:wght@500;700&family=Exo+2:wght@400;600;700&family=Saira+Stencil+One&family=Oswald:wght@500;600&family=Bebas+Neue&family=Share+Tech+Mono&family=Roboto+Condensed:wght@400;600&family=Black+Ops+One&family=Teko:wght@500;600&family=Barlow+Condensed:wght@500;600;700&family=Stardos+Stencil:wght@700&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0e2142">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -307,7 +307,7 @@ html.noanim #fx{display:none}
 kbd{font-family:"JetBrains Mono",monospace;font-size:10.5px;padding:2px 6px;border-radius:5px;border:1px solid var(--line2);background:var(--bg2);color:var(--muted);margin-left:4px}
 .btn.pri kbd{background:rgba(0,0,0,.18);color:inherit;border-color:rgba(0,0,0,.2)}
 /* hero */
-.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:1.3fr auto 1fr;gap:22px;align-items:center;padding:22px 24px;margin-bottom:14px;border-radius:calc(var(--radius) + 6px);border:1px solid rgba(var(--acc-rgb),.35);
+.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(300px,1fr) auto minmax(0,auto);gap:22px;align-items:center;padding:22px 24px;margin-bottom:14px;border-radius:calc(var(--radius) + 6px);border:1px solid rgba(var(--acc-rgb),.35);
   background:linear-gradient(120deg,rgba(var(--acc-rgb),.10),transparent 40%),linear-gradient(300deg,rgba(var(--acc2-rgb),.14),transparent 45%),var(--panel);box-shadow:0 0 0 1px rgba(var(--acc-rgb),.08),0 30px 60px -30px rgba(var(--acc-rgb),.45)}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(var(--acc-rgb),.08) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--acc-rgb),.08) 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(ellipse at 30% 50%,#000 20%,transparent 75%);pointer-events:none}
 .hero-scan{position:absolute;left:0;right:0;height:120px;top:-120px;background:linear-gradient(180deg,transparent,rgba(var(--acc-rgb),.10),transparent);animation:scan 6s linear infinite;pointer-events:none}
@@ -315,7 +315,7 @@ kbd{font-family:"JetBrains Mono",monospace;font-size:10.5px;padding:2px 6px;bord
 .hero>div:not(.hero-grid):not(.hero-scan){position:relative;z-index:1}
 .hero-l{display:flex;gap:18px;align-items:center;min-width:0}
 .hero .hk{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.25em;color:var(--cyan);opacity:.9}
-.hero h1{font-size:clamp(22px,2.3vw,34px);white-space:nowrap;margin:2px 0;letter-spacing:.06em;text-transform:uppercase;background:linear-gradient(90deg,var(--text),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1{font-size:clamp(22px,2.1vw,34px);line-height:1.05;margin:2px 0;letter-spacing:.06em;text-transform:uppercase;background:linear-gradient(90deg,var(--text),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .sub{color:var(--muted)}
 .emb{position:relative;width:96px;height:96px;flex:none;display:grid;place-items:center}
 .emb img{width:84px;height:84px;object-fit:contain;filter:drop-shadow(0 6px 18px rgba(var(--acc-rgb),.45));animation:float 5s ease-in-out infinite}
@@ -427,6 +427,38 @@ kbd{font-family:"JetBrains Mono",monospace;font-size:10.5px;padding:2px 6px;bord
 .cmd .ft{display:flex;gap:14px;padding:8px 14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--dim)}
 @media (prefers-reduced-motion:reduce){#fx{display:none}.hero-scan,.emb .orb,.emb img,.pb>i::after{animation:none}}
 html.noanim .hero-scan{display:none}
+
+/* ---------- thèmes militaires ---------- */
+html.fx-mw .card,html.fx-mw .hero{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px))}
+html.fx-mw .btn{clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));text-transform:uppercase;letter-spacing:.06em}
+html.fx-mw .card h3,html.fx-mw .top h1,html.fx-mw .hero h1{text-transform:uppercase;letter-spacing:.08em}
+html.fx-mw .card h3{font-size:19px}
+html.fx-mw .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:repeating-linear-gradient(-45deg,var(--cyan) 0 10px,transparent 10px 20px);opacity:.7}
+html.fx-mw .card{border-left:3px solid var(--cyan)}
+html.fx-mw body{background-image:var(--bg-img),repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px),radial-gradient(1000px 600px at 80% -10%,rgba(var(--acc2-rgb),.10),transparent 60%)}
+html.fx-mw .kpi .val{font-family:Teko,"JetBrains Mono",monospace;font-size:40px;line-height:1}html.fx-mw .clk b{font-family:Teko,"JetBrains Mono",monospace;font-size:24px;line-height:1.1}html.fx-mw .clk.s b{font-size:17px}
+html.fx-mw .nav a.on{border-radius:0;box-shadow:inset 3px 0 0 var(--cyan);background:rgba(var(--acc-rgb),.08)}
+html.fx-cic body{background-image:var(--bg-img),linear-gradient(rgba(var(--acc-rgb),.05) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--acc-rgb),.05) 1px,transparent 1px),radial-gradient(1200px 700px at 50% -20%,rgba(var(--acc-rgb),.12),transparent 60%);background-size:auto,40px 40px,40px 40px,auto}
+html.fx-cic body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;background:repeating-linear-gradient(0deg,rgba(0,0,0,.12) 0 1px,transparent 1px 4px)}
+html.fx-cic .card h3,html.fx-cic .kpi .val{text-shadow:0 0 8px rgba(var(--acc-rgb),.5)}
+html.fx-defcon body{background-image:var(--bg-img),radial-gradient(ellipse at center,transparent 55%,rgba(255,0,0,.16) 100%),repeating-linear-gradient(-45deg,rgba(255,42,42,.03) 0 14px,transparent 14px 28px)}
+html.fx-defcon .hero{animation:alertpulse 2.4s ease-in-out infinite}
+html.fx-defcon .clk.s b{animation:blink 1.2s steps(2) infinite}
+html.fx-defcon .hero::after{content:"⚠ DEFCON 1 ⚠";position:absolute;top:8px;right:14px;font:700 11px "JetBrains Mono",monospace;letter-spacing:.3em;color:var(--cyan);opacity:.85}
+@keyframes alertpulse{50%{box-shadow:0 0 0 1px rgba(var(--acc-rgb),.6),0 0 40px -6px rgba(var(--acc-rgb),.8)}}
+@keyframes blink{50%{opacity:.25}}
+html.fx-camo body{background-image:var(--bg-img),
+  radial-gradient(60px 38px at 12% 18%,rgba(var(--acc-rgb),.09) 98%,transparent),radial-gradient(80px 46px at 70% 30%,rgba(var(--acc2-rgb),.10) 98%,transparent),
+  radial-gradient(52px 70px at 40% 70%,rgba(0,0,0,.18) 98%,transparent),radial-gradient(90px 40px at 85% 85%,rgba(var(--acc-rgb),.07) 98%,transparent),
+  radial-gradient(46px 30px at 25% 92%,rgba(var(--acc2-rgb),.09) 98%,transparent),radial-gradient(70px 50px at 55% 8%,rgba(0,0,0,.14) 98%,transparent);
+  background-size:auto,260px 260px,260px 260px,260px 260px,260px 260px,260px 260px,260px 260px}
+html.fx-camo[data-theme=light] body{background-image:var(--bg-img),radial-gradient(60px 38px at 12% 18%,rgba(var(--acc2-rgb),.10) 98%,transparent),radial-gradient(80px 46px at 70% 30%,rgba(255,255,255,.7) 98%,transparent),radial-gradient(52px 70px at 40% 70%,rgba(var(--acc2-rgb),.08) 98%,transparent),radial-gradient(90px 40px at 85% 85%,rgba(var(--acc-rgb),.06) 98%,transparent)}
+html.fx-camo .card h3,html.fx-camo .hero h1,html.fx-camo .top h1{letter-spacing:.1em}
+html.fx-camo .card{border-top:2px solid rgba(var(--acc-rgb),.6)}
+html.fx-camo .hero h1{background:none;color:var(--text)}
+html.fx-stealth body{background-image:var(--bg-img),linear-gradient(180deg,var(--bg2),var(--bg))}
+html.fx-stealth .card{background:linear-gradient(160deg,rgba(255,255,255,.035),transparent 40%),var(--panel)}
+html.fx-stealth .card.hud::after{opacity:.3}
 </style>
 </head>
 <body>
@@ -484,7 +516,7 @@ html.noanim .hero-scan{display:none}
         <div class="c12 kwrap"><div class="grid g4" id="kpis"></div></div>
 
         <div class="card hud c8"><h3>📈 <span id="tMonth">Heures par mois</span>
-            <div class="seg mini" id="mMode"><label><input type="radio" name="mm" value="hm" checked><span>Jour / nuit</span></label><label><input type="radio" name="mm" value="cum"><span>Cumul vs objectif</span></label><label><input type="radio" name="mm" value="cmp"><span>Années</span></label></div></h3>
+            <div class="seg mini" id="mMode"><label><input type="radio" name="mm" value="hm" checked><span>Jour / nuit</span></label><label><input type="radio" name="mm" value="cum"><span>Cumul depuis le début</span></label><label><input type="radio" name="mm" value="cmp"><span>Années</span></label></div></h3>
           <div class="chart" style="height:340px"><canvas id="cMonth"></canvas></div></div>
         <div class="card hud c4"><h3>📡 Radar appareils <span class="tag c" id="nbAv"></span></h3>
           <div class="radar"><canvas id="radar"></canvas><div class="rtip" id="rtip"></div></div>
@@ -1188,8 +1220,9 @@ function renderDash(){
   $$('#bCarte .bar').forEach((b,i)=>{ const k=gC[i][0]; b.onclick=()=>setDF('carte',k); b.classList.toggle('on',DF.carte===k); });
 
   // Graphique principal
-  $('#mMode').style.display= yv==='all'?'none':'';
-  const mode= yv==='all'?'cmp':mMode;
+  $('#mMode').querySelector('label').style.display= yv==='all'?'none':'';
+  const mode= yv==='all'&&mMode==='hm'?'cmp':mMode;
+  $$('#mMode input').forEach(r=>r.checked=r.value===mode);
   const ttHM=c=>` ${c.dataset.label} : ${fmtHM(c.raw*60)} h`;
   if(mode==='cmp'){
     $('#tMonth').textContent='Heures par mois — comparaison des années';
@@ -1197,16 +1230,25 @@ function renderDash(){
       return {label:y,data:a.map(v=>+v.toFixed(2)),borderColor:c,backgroundColor:last?vGrad(c,.45,0):rgba(c,.05),fill:true,tension:.4,pointRadius:3,pointHoverRadius:7,borderWidth:last?3:2}; });
     mkChart('cMonth',{type:'line',data:{labels:MONTHS,datasets:ds},options:{maintainAspectRatio:false,animation:ANIM,interaction:{mode:'index',intersect:false},scales:{x:{grid:{display:false}},y:{beginAtZero:true,title:{display:true,text:'heures'}}},plugins:{tooltip:{callbacks:{label:ttHM}}}}});
   } else if(mode==='cum'){
-    $('#tMonth').textContent=`Cumul ${yv} vs objectif ${oH} h`;
-    const lastM= isCur&&+yv===now.getFullYear()? now.getMonth() : 11;
-    const cum=Array(12).fill(0); F.forEach(f=>{ if(f.date.startsWith(yv)) cum[+f.date.slice(5,7)-1]+=durMin(f)/60; }); for(let i=1;i<12;i++) cum[i]+=cum[i-1];
-    const prevY=String(+yv-1), pc=Array(12).fill(0); all.filter(f=>f._s===prevY&&(!DF.avion||f.avion===DF.avion)).forEach(f=>{ if(f.date.startsWith(prevY)) pc[+f.date.slice(5,7)-1]+=durMin(f)/60; }); for(let i=1;i<12;i++) pc[i]+=pc[i-1];
-    const cy=css('--cyan');
-    mkChart('cMonth',{type:'line',data:{labels:MONTHS,datasets:[
-      {label:yv,data:cum.map((v,i)=>i<=lastM?+v.toFixed(1):null),borderColor:cy,backgroundColor:vGrad(cy,.5,0),fill:true,tension:.35,borderWidth:3,pointRadius:4,pointHoverRadius:8},
-      {label:'Rythme objectif',data:MONTHS.map((_,i)=>+(oH*(i+1)/12).toFixed(1)),borderColor:css('--amber'),borderDash:[6,6],pointRadius:0,borderWidth:2,fill:false},
-      ...(S.years[prevY]?[{label:prevY,data:pc.map(v=>+v.toFixed(1)),borderColor:css('--dim'),pointRadius:0,borderWidth:1.5,fill:false,tension:.35}]:[])]},
-      options:{maintainAspectRatio:false,animation:ANIM,interaction:{mode:'index',intersect:false},scales:{x:{grid:{display:false}},y:{beginAtZero:true,title:{display:true,text:'heures cumulées'}}},plugins:{tooltip:{callbacks:{label:ttHM}}}}});
+    const flt=!!(DF.avion||DF.mission||DF.carte);
+    const det=allFlights().filter(f=>f.avion&&(!DF.avion||f.avion===DF.avion)&&(!DF.mission||f.mission===DF.mission)&&(!DF.carte||f.carte===DF.carte));
+    const YS=[...new Set([...(flt?[]:S.hist.map(h=>h.year)),...sheets().filter(s=>/^\d{4}$/.test(s)).map(Number)])].sort((a,b)=>a-b);
+    const annual=YS.map(y=>S.years[y]? det.filter(f=>f._s===String(y)).reduce((s,f)=>s+durMin(f),0)/60 : (S.hist.find(h=>h.year===y)?.heures||0));
+    let run=0; const cumY=annual.map(v=>+(run+=v).toFixed(1));
+    const selI=YS.indexOf(+yv), curI=YS.indexOf(now.getFullYear());
+    $('#tMonth').textContent=`Cumul des heures depuis ${YS[0]||''} — ${Math.round(run).toLocaleString('fr-FR')} h${flt?' (vols filtrés)':''}`;
+    const cy=css('--cyan'), am=css('--amber'), l2=css('--line2');
+    const objL=YS.map(()=>null), proj=YS.map(()=>null);
+    if(curI>0&&!flt){ objL[curI-1]=cumY[curI-1]; objL[curI]=+(cumY[curI-1]+oH).toFixed(1); proj[curI-1]=cumY[curI-1]; const fN=Math.max(.01,(now-new Date(now.getFullYear(),0,1))/(365*864e5)); proj[curI]=+(cumY[curI-1]+annual[curI]/fN).toFixed(1); }
+    mkChart('cMonth',{type:'bar',data:{labels:YS,datasets:[
+      {type:'line',label:'Cumul carrière',data:cumY,borderColor:cy,backgroundColor:vGrad(cy,.45,0),fill:true,tension:.3,borderWidth:3,yAxisID:'y',order:1,
+        pointRadius:c=>c.dataIndex===selI?7:3,pointHoverRadius:9,pointBackgroundColor:c=>c.dataIndex===selI?css('--text'):cy},
+      ...(curI>0&&!flt?[{type:'line',label:`Objectif ${YS[curI]}`,data:objL,borderColor:am,borderDash:[6,6],pointRadius:0,borderWidth:2,fill:false,yAxisID:'y',order:0},
+        {type:'line',label:'Projection fin d\'année',data:proj,borderColor:css('--green'),borderDash:[2,4],pointRadius:c=>c.dataIndex===curI?5:0,borderWidth:2,fill:false,yAxisID:'y',order:0}]:[]),
+      {label:'Heures de l\'année',data:annual.map(v=>+v.toFixed(1)),backgroundColor:c=>vGrad(S.years[YS[c.dataIndex]]?am:l2,.9,.25)(c),borderRadius:6,yAxisID:'y1',order:2}]},
+      options:{maintainAspectRatio:false,animation:ANIM,interaction:{mode:'index',intersect:false},
+        scales:{x:{grid:{display:false}},y:{beginAtZero:true,title:{display:true,text:'heures cumulées'},ticks:{callback:v=>v.toLocaleString('fr-FR')}},y1:{position:'right',beginAtZero:true,grid:{display:false},title:{display:true,text:'heures / an'}}},
+        plugins:{tooltip:{callbacks:{label:c=>c.raw==null?null:` ${c.dataset.label} : ${Math.round(c.raw).toLocaleString('fr-FR')} h`}}}}});
   } else {
     $('#tMonth').textContent=`Heures par mois — ${yv} (jour / nuit)`;
     const J=Array(12).fill(0),N=Array(12).fill(0),C=Array(12).fill(0);
@@ -1745,13 +1787,27 @@ async function delHist(i){ if(!await confirmBox('Supprimer',`Supprimer l'histori
 function applyTheme(){ apApply(); chartDefaults(); if(REG.length) uxApply(); }
 
 /* ================= APPARENCE ================= */
-const FONTS={'Rajdhani':'Rajdhani,Inter,sans-serif','Inter':'Inter,system-ui,sans-serif','Orbitron':'Orbitron,Rajdhani,sans-serif','Exo 2':'"Exo 2",Inter,sans-serif','Saira Stencil One':'"Saira Stencil One",Rajdhani,sans-serif','Oswald':'Oswald,sans-serif','Bebas Neue':'"Bebas Neue",Rajdhani,sans-serif','Roboto Condensed':'"Roboto Condensed",sans-serif','Share Tech Mono':'"Share Tech Mono",monospace','JetBrains Mono':'"JetBrains Mono",monospace','Segoe UI (Windows 11)':'"Segoe UI Variable Display","Segoe UI Variable Text","Segoe UI",system-ui,sans-serif','Système':'system-ui,-apple-system,"Segoe UI",Roboto,sans-serif'};
+const FONTS={'Rajdhani':'Rajdhani,Inter,sans-serif','Inter':'Inter,system-ui,sans-serif','Orbitron':'Orbitron,Rajdhani,sans-serif','Exo 2':'"Exo 2",Inter,sans-serif','Saira Stencil One':'"Saira Stencil One",Rajdhani,sans-serif','Oswald':'Oswald,sans-serif','Bebas Neue':'"Bebas Neue",Rajdhani,sans-serif','Roboto Condensed':'"Roboto Condensed",sans-serif','Share Tech Mono':'"Share Tech Mono",monospace','Black Ops One':'"Black Ops One",Rajdhani,sans-serif','Teko':'Teko,Rajdhani,sans-serif','Barlow Condensed':'"Barlow Condensed",Inter,sans-serif','Stardos Stencil':'"Stardos Stencil",Rajdhani,sans-serif','JetBrains Mono':'"JetBrains Mono",monospace','Segoe UI (Windows 11)':'"Segoe UI Variable Display","Segoe UI Variable Text","Segoe UI",system-ui,sans-serif','Système':'system-ui,-apple-system,"Segoe UI",Roboto,sans-serif'};
 const DARKX={sky:'#60a5fa',orange:'#fb923c',lime:'#a3e635',pink:'#f472b6'}, LIGHTX={sky:'#2563eb',orange:'#ea580c',lime:'#65a30d',pink:'#db2777'};
 const THEMES={
  cockpit:{name:'Cockpit (origine)',desc:'Sombre, cyan tactique',mode:'dark',ft:'Rajdhani',fb:'Inter',rd:14,
   v:{bg:'#070d1a',bg2:'#0b1426',panel:'#0f1a30',panel2:'#14223d',line:'#1f3054',line2:'#2a3f68',text:'#e7eef9',muted:'#8ea3c4',dim:'#5d7398',cyan:'#22d3ee',accent2:'#3b82f6',onacc:'#04121c',amber:'#fbbf24',green:'#34d399',rose:'#fb7185',violet:'#a78bfa'}},
  usnavy:{name:'US NAVY',desc:'Bleu marine & or, esprit escadron',mode:'dark',ft:'Saira Stencil One',fb:'Inter',rd:6,fx:'navy',wm:true,
   v:{bg:'#061226',bg2:'#0a1a34',panel:'#0e2142',panel2:'#132b54',line:'#1f3a6b',line2:'#2c4d87',text:'#f6f1e3',muted:'#b4bfd3',dim:'#7486a6',cyan:'#f2b705',accent2:'#c8102e',onacc:'#1a1200',amber:'#ffd65a',green:'#4cc38a',rose:'#e23b4e',violet:'#8fa8ff'}},
+ mw:{name:'Modern Warfare',desc:'Tactique noir, vert lime & orange, coins coupés',mode:'dark',ft:'Teko',fb:'Barlow Condensed',rd:0,fx:'mw',
+  v:{bg:'#0a0b09',bg2:'#0f110d',panel:'#151812',panel2:'#1c2019',line:'#2a3025',line2:'#3a4233',text:'#ecefe4',muted:'#a3ab95',dim:'#6c7462',cyan:'#b6ff3b',accent2:'#ff6a13',onacc:'#0c1200',amber:'#ffb627',green:'#7dff6a',rose:'#ff4a3d',violet:'#9fb7ff'}},
+ opscenter:{name:'Centre d\'opérations',desc:'Salle CIC : sarcelle, grille et balayage',mode:'dark',ft:'Rajdhani',fb:'Inter',rd:4,fx:'cic',
+  v:{bg:'#020c10',bg2:'#04131a',panel:'#061a21',panel2:'#0a232c',line:'#0f3540',line2:'#174b59',text:'#d9fbff',muted:'#7fb8c2',dim:'#4a7c86',cyan:'#19e6c1',accent2:'#ff9d2e',onacc:'#00120e',amber:'#ffb648',green:'#3dff9e',rose:'#ff5a5f',violet:'#7fa7ff'}},
+ defcon:{name:'DEFCON 1 — Alerte',desc:'Noir & rouge, alerte maximale',mode:'dark',ft:'Black Ops One',fb:'Roboto Condensed',rd:2,fx:'defcon',
+  v:{bg:'#0b0404',bg2:'#120606',panel:'#1a0909',panel2:'#230d0d',line:'#3a1414',line2:'#561c1c',text:'#ffecec',muted:'#d69a9a',dim:'#8c5a5a',cyan:'#ff2a2a',accent2:'#ffb000',onacc:'#ffffff',amber:'#ffb000',green:'#59e28c',rose:'#ff2a2a',violet:'#ff8fb1'}},
+ camo:{name:'Camouflage forêt',desc:'Armée de terre : olive, kaki, motif camouflage',mode:'dark',ft:'Stardos Stencil',fb:'Roboto Condensed',rd:6,fx:'camo',
+  v:{bg:'#12160f',bg2:'#181d14',panel:'#1e2419',panel2:'#262e20',line:'#343f2b',line2:'#46533a',text:'#eef0e2',muted:'#b3b99b',dim:'#7a8168',cyan:'#a8c26a',accent2:'#c9a86a',onacc:'#141a0c',amber:'#e3c16f',green:'#8fcf6a',rose:'#d9604a',violet:'#9fb0d6'}},
+ desert:{name:'Désert — OPEX',desc:'Sable & ocre, théâtre désertique',mode:'dark',ft:'Black Ops One',fb:'Roboto Condensed',rd:4,fx:'camo',
+  v:{bg:'#17130d',bg2:'#1e1911',panel:'#272017',panel2:'#30281c',line:'#463a28',line2:'#5c4c33',text:'#f7ecd9',muted:'#cdb894',dim:'#8f7d60',cyan:'#e6b866',accent2:'#b0652c',onacc:'#1d1306',amber:'#ffcf6b',green:'#9ccf73',rose:'#e0583c',violet:'#a9b3e0'}},
+ arctic:{name:'Arctique — Grand Nord',desc:'Clair : blanc neige, gris acier, bleu glacier',mode:'light',ft:'Stardos Stencil',fb:'Roboto Condensed',rd:4,fx:'camo',
+  v:{bg:'#e9eef1',bg2:'#dfe6ea',panel:'#f8fafb',panel2:'#eef3f5',line:'#cfd9df',line2:'#b6c4cc',text:'#16222b',muted:'#4d606d',dim:'#7d8f9b',cyan:'#1f6f9c',accent2:'#5d7584',onacc:'#ffffff',amber:'#b9770e',green:'#2f8a4f',rose:'#c0392b',violet:'#5b4fa3'}},
+ stealth:{name:'Furtif',desc:'Gris furtif, accents discrets type 5e génération',mode:'dark',ft:'Barlow Condensed',fb:'Inter',rd:3,fx:'stealth',
+  v:{bg:'#0f1113',bg2:'#14171a',panel:'#1a1e22',panel2:'#21262b',line:'#2c3238',line2:'#3a424a',text:'#e6eaee',muted:'#9aa5b0',dim:'#66717c',cyan:'#9fc3e0',accent2:'#5f7a90',onacc:'#0b1218',amber:'#d8b45a',green:'#7ccf9c',rose:'#e07070',violet:'#a7a2e0'}},
  ps5:{name:'PS5',desc:'Noir profond, bleu PlayStation, boutons pilule',mode:'dark',ft:'Exo 2',fb:'Inter',rd:20,fx:'ps5',
   v:{bg:'#02040b',bg2:'#060b1a',panel:'#0b1224',panel2:'#111a33',line:'#1b2747',line2:'#2a3a66',text:'#f5f7ff',muted:'#9aa8c7',dim:'#5f6b8a',cyan:'#3d8bff',accent2:'#0050d8',onacc:'#ffffff',amber:'#ffc94a',green:'#3ee08f',rose:'#ff5a7a',violet:'#b28cff'}},
  win11:{name:'PC Windows 11',desc:'Clair, effet Mica, Segoe UI',mode:'light',ft:'Segoe UI (Windows 11)',fb:'Segoe UI (Windows 11)',rd:8,fx:'win11',glass:true,
@@ -1797,7 +1853,7 @@ function apApply(){
   [v.cyan,v.amber,v.violet,v.green,v.rose,v.accent2].forEach((c,i)=>PALETTE[i]=c);
 }
 let apTimer;
-function apSave(rerender=true){ persist(); applyTheme(); clearTimeout(apTimer); if(rerender) apTimer=setTimeout(()=>{ const p=(location.hash||'#dashboard').slice(1); if(p==='apparence') renderAppear(); },120); }
+function apSave(rerender=true){ persist(); applyTheme(); if($('#p-dashboard').classList.contains('on')) renderDash(); clearTimeout(apTimer); if(rerender) apTimer=setTimeout(()=>{ const p=(location.hash||'#dashboard').slice(1); if(p==='apparence') renderAppear(); },120); }
 function apTheme(k){ const a=AP(); Object.assign(a,{theme:k,c:{},ft:undefined,fb:undefined,rd:undefined,glass:undefined,wm:undefined}); apSave(); toast('🎨 Thème « '+THEMES[k].name+' » appliqué'); }
 function apSet(k,v){ AP()[k]=v; apSave(); }
 function apColor(k,v){ const a=AP(); a.c??={}; if(v===null) delete a.c[k]; else a.c[k]=v; apSave(false); clearTimeout(apTimer); apTimer=setTimeout(renderAppear,250); }
